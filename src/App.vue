@@ -1,0 +1,69 @@
+<template>
+  <header-template></header-template>
+  <social-nav-organism></social-nav-organism>
+  <suspense>
+    <template #default>
+      <router-view v-slot="{ Component }">
+        <transition>
+          <component :is="Component"></component>
+        </transition>
+      </router-view>
+    </template>
+    <template #fallback>
+      <p>Loading...</p>
+    </template>
+  </suspense>
+  <footer-template></footer-template>
+</template>
+
+<script setup>
+import HeaderTemplate from "#/templates/Header.vue";
+import SocialNavOrganism from "#/organisms/SocialNav.vue";
+import FooterTemplate from "#/templates/Footer.vue";
+
+import { useAuthenticationStore } from "@/store/authenticationStore";
+
+const authenticationStore = useAuthenticationStore();
+
+const retrieveSession = async () => {
+  try {
+    await authenticationStore.retrieveSession();
+  } catch (error) {
+    if (error.response && error.response.status !== 403) {
+      console.error(error);
+    }
+  }
+};
+retrieveSession();
+</script>
+
+<style lang="scss">
+html {
+  @apply scroll-smooth;
+}
+
+body {
+  @apply px-5 text-slate-400 bg-slate-900;
+  @apply sm:px-20 xl:px-40;
+
+  &.nav-is-toggled {
+    @apply overflow-hidden;
+  }
+}
+
+// ------------------------- Transition
+.v-enter-active,
+.v-leave-active {
+  @apply transition-opacity duration-300;
+}
+
+.v-enter-from,
+.v-leave-to {
+  @apply opacity-0;
+}
+
+// ------------------------- Scrollbar
+::-webkit-scrollbar {
+  @apply hidden;
+}
+</style>

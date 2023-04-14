@@ -1,0 +1,36 @@
+<template>
+  <div class="progress-bar-wrapper">
+    <div class="progress-bar"></div>
+  </div>
+</template>
+
+<script setup>
+import { ref } from "vue";
+
+const props = defineProps({
+  progress: { type: Number, required: true },
+});
+
+const progress = ref(props.progress + "%");
+</script>
+
+<style lang="scss" scoped>
+.progress-bar-wrapper {
+  @apply h-2 w-full relative bg-slate-900;
+
+  .progress-bar {
+    @apply h-full absolute bg-teal-200;
+    width: v-bind(progress);
+    animation: progress-animation 1.5s ease-in-out;
+  }
+}
+
+@keyframes progress-animation {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: progress;
+  }
+}
+</style>
