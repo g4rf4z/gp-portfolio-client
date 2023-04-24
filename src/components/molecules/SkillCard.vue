@@ -25,7 +25,10 @@
     <picture>
       <img :src="image" alt="Compétence" />
     </picture>
-    <h5>{{ name }}</h5>
+    <div class="skill-data">
+      <h4>{{ name }}</h4>
+      <h5>{{ currentProgress }}%</h5>
+    </div>
     <progress-bar-atom :progress="progress"></progress-bar-atom>
   </card-wrapper-atom>
 </template>
@@ -68,6 +71,26 @@ const deleteSkill = async (id) => {
     console.error(error);
   }
 };
+
+let currentProgress = ref(0);
+
+const animateProgress = (newValue) => {
+  const duration = 1500;
+  let start = null;
+  const step = (timestamp) => {
+    if (!start) start = timestamp;
+    const progress = timestamp - start;
+    currentProgress.value = Math.min(
+      Math.floor((progress / duration) * newValue),
+      newValue
+    );
+    if (currentProgress.value < newValue) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+};
+animateProgress(props.progress);
 </script>
 
 <style lang="scss" scoped>
@@ -97,8 +120,12 @@ const deleteSkill = async (id) => {
     }
   }
 
-  h5 {
-    @apply font-mono;
+  .skill-data {
+    @apply flex justify-between;
+
+    h5 {
+      @apply font-mono;
+    }
   }
 }
 </style>
