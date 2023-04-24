@@ -98,7 +98,7 @@ const updatePassword = async () => {
   try {
     validationErrors.value["passwordUpdateForm"] = {};
     const isValid = await validateData(
-      ["passwordUpdateForm"],
+      "passwordUpdateForm",
       passwordSchema,
       passwordData.value
     );
