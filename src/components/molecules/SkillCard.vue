@@ -121,11 +121,20 @@ animateProgress(props.progress);
   }
 
   .skill-data {
-    @apply flex justify-between;
+    @apply flex justify-between font-mono;
 
+    h4,
     h5 {
-      @apply font-mono;
+      @apply duration-300;
     }
   }
+}
+
+.skill-card:hover h4 {
+  @apply text-slate-100 translate-x-10;
+}
+
+.skill-card:hover h5 {
+  @apply text-slate-100;
 }
 </style>

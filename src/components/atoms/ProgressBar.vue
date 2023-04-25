@@ -16,10 +16,10 @@ const progress = ref(props.progress + "%");
 
 <style lang="scss" scoped>
 .progress-bar-wrapper {
-  @apply h-2 w-full relative bg-slate-900;
+  @apply h-2 w-full relative rounded bg-slate-900;
 
   .progress-bar {
-    @apply h-full absolute bg-teal-200;
+    @apply h-full absolute rounded bg-teal-200;
     width: v-bind(progress);
     animation: progress-animation 1.5s ease-in-out;
   }
