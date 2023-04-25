@@ -1,17 +1,17 @@
 <template>
   <div class="progress-bar-wrapper">
-    <div class="progress-bar"></div>
+    <div :style="{ width: progress }" class="progress-bar"></div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   progress: { type: Number, required: true },
 });
 
-const progress = ref(props.progress + "%");
+const progress = computed(() => props.progress + "%");
 </script>
 
 <style lang="scss" scoped>
@@ -20,7 +20,6 @@ const progress = ref(props.progress + "%");
 
   .progress-bar {
     @apply h-full absolute rounded bg-teal-200;
-    width: v-bind(progress);
     animation: progress-animation 1.5s ease-in-out;
   }
 }

@@ -27,8 +27,6 @@ export const useSkillStore = defineStore({
           data: { name, image, progress },
         });
         return (this.skill = new Skill(createdSkill));
-      } catch (error) {
-        console.error(error);
       } finally {
         this.loaders["createSkill"] = false;
       }

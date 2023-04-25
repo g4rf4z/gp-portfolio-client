@@ -39,7 +39,7 @@ import IconLinkMolecule from "#/molecules/IconLink.vue";
 import IconAtom from "#/atoms/Icon.vue";
 import ProgressBarAtom from "#/atoms/ProgressBar.vue";
 
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useAuthenticationStore } from "@/store/authenticationStore";
 import { useSkillStore } from "@/store/skillStore";
 
@@ -72,16 +72,16 @@ const deleteSkill = async (id) => {
   }
 };
 
-let currentProgress = ref(0);
+let currentProgress = ref(props.progress);
 
 const animateProgress = (newValue) => {
-  const duration = 1500;
-  let start = null;
+  let startAnimation = null;
+  const animationDuration = 1500;
   const step = (timestamp) => {
-    if (!start) start = timestamp;
-    const progress = timestamp - start;
+    if (!startAnimation) startAnimation = timestamp;
+    const progress = timestamp - startAnimation;
     currentProgress.value = Math.min(
-      Math.floor((progress / duration) * newValue),
+      Math.floor((progress / animationDuration) * newValue),
       newValue
     );
     if (currentProgress.value < newValue) {
@@ -91,6 +91,13 @@ const animateProgress = (newValue) => {
   window.requestAnimationFrame(step);
 };
 animateProgress(props.progress);
+
+watch(
+  () => props.progress,
+  (newValue) => {
+    animateProgress(newValue);
+  }
+);
 </script>
 
 <style lang="scss" scoped>
@@ -131,7 +138,7 @@ animateProgress(props.progress);
 }
 
 .skill-card:hover h4 {
-  @apply text-slate-100 translate-x-10;
+  @apply text-slate-100 translate-x-5;
 }
 
 .skill-card:hover h5 {
