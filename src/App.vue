@@ -39,7 +39,7 @@ retrieveSession();
 
 <style lang="scss">
 html {
-  @apply scroll-smooth;
+  @apply scroll-smooth select-none;
 }
 
 body {
