@@ -5,7 +5,7 @@
       id="position"
       name="position"
       v-model="experience.position"
-      placeholder="Exemple : Développeur JavaScript"
+      placeholder="Développeur JavaScript"
       :error-message="validationErrors.experienceUpdateForm?.position"
       @input="resetError('position')"
     ></form-input-molecule>
@@ -14,7 +14,7 @@
       id="company"
       name="company"
       v-model="experience.company"
-      placeholder="Exemple : Google LLC"
+      placeholder="Google LLC"
       :error-message="validationErrors.experienceUpdateForm?.company"
       @input="resetError('company')"
     ></form-input-molecule>
@@ -23,7 +23,7 @@
       id="city"
       name="city"
       v-model="experience.city"
-      placeholder="Exemple : Mountain View"
+      placeholder="Mountain View"
       :error-message="validationErrors.experienceUpdateForm?.city"
       @input="resetError('city')"
     ></form-input-molecule>
@@ -32,7 +32,7 @@
       id="country"
       name="country"
       v-model="experience.country"
-      placeholder="Exemple : États-Unis"
+      placeholder="États-Unis"
       :error-message="validationErrors.experienceUpdateForm?.country"
       @input="resetError('country')"
     ></form-input-molecule
@@ -43,6 +43,7 @@
       type="date"
       v-model="from"
       :error-message="validationErrors.experienceUpdateForm?.from"
+      :max="currentDate"
       @input="resetError('from')"
     ></form-input-molecule>
     <form-input-molecule
@@ -74,7 +75,7 @@ import FormInputMolecule from "#/molecules/FormInput.vue";
 import FormTextareaMolecule from "#/molecules/FormTextarea.vue";
 import ButtonAtom from "#/atoms/Button.vue";
 
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useExperienceStore } from "@/store/experienceStore";
 import { experienceSchema } from "@/validations/experienceSchema";
@@ -87,6 +88,8 @@ const experienceStore = useExperienceStore();
 
 const experience = computed(() => experienceStore.experience);
 const loading = computed(() => experienceStore.loaders.updateExperience);
+
+const currentDate = ref(new Date().toISOString().slice(0, 10));
 
 const from = computed({
   get() {
@@ -125,7 +128,7 @@ const updateExperience = async () => {
   try {
     validationErrors.value["experienceUpdateForm"] = {};
     const isValid = await validateData(
-      ["experienceUpdateForm"],
+      "experienceUpdateForm",
       experienceSchema,
       experience.value
     );

@@ -19,7 +19,7 @@ const props = defineProps({
   modelValue: { type: [Date, File, Number, String], default: null },
   placeholder: { type: String, default: null },
   min: { type: Number, default: null },
-  max: { type: Number, default: null },
+  max: { type: [Number, String], default: null },
 });
 
 const emit = defineEmits(["input", "update:modelValue"]);
