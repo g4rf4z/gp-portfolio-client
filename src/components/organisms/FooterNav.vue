@@ -1,7 +1,7 @@
 <template>
   <div class="footer-wrapper">
-    <link-atom is="a" to="https://github.com/g4rf4z/">
-      <small class="copyright">© 2022 - 2023 - Grégoire Pinte</small>
+    <link-atom is="a" to="https://github.com/g4rf4z/gp-portfolio-client">
+      <small class="copyright">© 2023 - Grégoire Pinte</small>
     </link-atom>
     <div class="github-statistics">
       <small class="star">
