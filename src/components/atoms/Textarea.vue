@@ -19,6 +19,7 @@ const props = defineProps({
 });
 
 const emit = defineEmits(["input", "update:modelValue"]);
+
 const handleInput = (event) => {
   emit("input", event);
   emit("update:modelValue", event.target.value);
@@ -27,7 +28,7 @@ const handleInput = (event) => {
 
 <style lang="scss" scoped>
 textarea {
-  @apply h-40 w-full p-2 align-top bg-slate-800 duration-300;
+  @apply h-40 w-full p-2 align-top rounded bg-slate-800 duration-300;
   @apply hover:bg-slate-700;
 }
 </style>

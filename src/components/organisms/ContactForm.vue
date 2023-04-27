@@ -5,7 +5,7 @@
       id="firstname"
       name="firstname"
       v-model="contactData.firstname"
-      placeholder="Exemple : John"
+      placeholder="Samus"
       :error-message="validationErrors.contactForm?.firstname"
       @input="resetError('firstname')"
     ></form-input-molecule>
@@ -14,7 +14,7 @@
       id="lastname"
       name="lastname"
       v-model="contactData.lastname"
-      placeholder="Exemple : Doe"
+      placeholder="Aran"
       :error-message="validationErrors.contactForm?.lastname"
       @input="resetError('lastname')"
     ></form-input-molecule>
@@ -23,7 +23,7 @@
       id="email"
       name="email"
       v-model="contactData.email"
-      placeholder="Exemple : john.doe@gmail.com"
+      placeholder="samus.aran@email.com"
       :error-message="validationErrors.contactForm?.email"
       @input="resetError('email')"
     ></form-input-molecule>
@@ -93,14 +93,12 @@ const resetError = (field) => {
 
 const postContact = async () => {
   try {
-    // If "subject" field is filled, the form submission is skipped.
     if (contactData.value.subject) {
       return;
     }
-
     validationErrors.value["contactForm"] = {};
     const isValid = await validateData(
-      ["contactForm"],
+      "contactForm",
       contactSchema,
       contactData.value
     );
