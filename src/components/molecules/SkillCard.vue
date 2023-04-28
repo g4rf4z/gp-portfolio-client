@@ -25,7 +25,10 @@
     <picture>
       <img :src="image" alt="Compétence" />
     </picture>
-    <h5>{{ name }}</h5>
+    <div class="skill-data">
+      <h4>{{ name }}</h4>
+      <h5>{{ currentProgress }}%</h5>
+    </div>
     <progress-bar-atom :progress="progress"></progress-bar-atom>
   </card-wrapper-atom>
 </template>
@@ -36,7 +39,7 @@ import IconLinkMolecule from "#/molecules/IconLink.vue";
 import IconAtom from "#/atoms/Icon.vue";
 import ProgressBarAtom from "#/atoms/ProgressBar.vue";
 
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import { useAuthenticationStore } from "@/store/authenticationStore";
 import { useSkillStore } from "@/store/skillStore";
 
@@ -68,6 +71,33 @@ const deleteSkill = async (id) => {
     console.error(error);
   }
 };
+
+let currentProgress = ref(props.progress);
+
+const animateProgress = (newValue) => {
+  let startAnimation = null;
+  const animationDuration = 1500;
+  const step = (timestamp) => {
+    if (!startAnimation) startAnimation = timestamp;
+    const progress = timestamp - startAnimation;
+    currentProgress.value = Math.min(
+      Math.floor((progress / animationDuration) * newValue),
+      newValue
+    );
+    if (currentProgress.value < newValue) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+};
+animateProgress(props.progress);
+
+watch(
+  () => props.progress,
+  (newValue) => {
+    animateProgress(newValue);
+  }
+);
 </script>
 
 <style lang="scss" scoped>
@@ -97,8 +127,21 @@ const deleteSkill = async (id) => {
     }
   }
 
-  h5 {
-    @apply font-mono;
+  .skill-data {
+    @apply flex justify-between font-mono;
+
+    h4,
+    h5 {
+      @apply duration-300;
+    }
   }
+}
+
+.skill-card:hover h4 {
+  @apply text-slate-100 translate-x-5;
+}
+
+.skill-card:hover h5 {
+  @apply text-slate-100;
 }
 </style>

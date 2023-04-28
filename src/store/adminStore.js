@@ -24,7 +24,12 @@ export const useAdminStore = defineStore({
         const updatedProfile = await apiWrapper.patch(`/me`, {
           data: { firstname, lastname, nickname },
         });
-        return admin.update(updatedProfile);
+        admin.update(updatedProfile);
+        return (
+          updatedProfile.firstname,
+          updatedProfile.lastname,
+          updatedProfile.nickname
+        );
       } finally {
         this.loaders["updateProfile"] = false;
       }
@@ -39,7 +44,7 @@ export const useAdminStore = defineStore({
         const updatedEmail = await apiWrapper.patch(`/me/email`, {
           data: { email },
         });
-        admin.update(updatedEmail.data);
+        admin.update(updatedEmail);
         return updatedEmail.email;
       } finally {
         this.loaders["updateEmail"] = false;

@@ -5,7 +5,7 @@
       id="position"
       name="position"
       v-model="experienceData.position"
-      placeholder="Exemple : Développeur JavaScript"
+      placeholder="Développeur JavaScript"
       :error-message="validationErrors.experienceCreationForm?.position"
       @input="resetError('position')"
     ></form-input-molecule>
@@ -14,7 +14,7 @@
       id="company"
       name="company"
       v-model="experienceData.company"
-      placeholder="Exemple : Google LLC"
+      placeholder="Google LLC"
       :error-message="validationErrors.experienceCreationForm?.company"
       @input="resetError('company')"
     ></form-input-molecule>
@@ -23,7 +23,7 @@
       id="city"
       name="city"
       v-model="experienceData.city"
-      placeholder="Exemple : Mountain View"
+      placeholder="Mountain View"
       :error-message="validationErrors.experienceCreationForm?.city"
       @input="resetError('city')"
     ></form-input-molecule>
@@ -32,7 +32,7 @@
       id="country"
       name="country"
       v-model="experienceData.country"
-      placeholder="Exemple : États-Unis"
+      placeholder="États-Unis"
       :error-message="validationErrors.experienceCreationForm?.country"
       @input="resetError('country')"
     ></form-input-molecule
@@ -43,6 +43,7 @@
       type="date"
       v-model="dateFrom"
       :error-message="validationErrors.experienceCreationForm?.from"
+      :max="currentDate"
       @input="resetError('from')"
     ></form-input-molecule>
     <form-input-molecule
@@ -64,7 +65,7 @@
       @input="resetError('tasks')"
     ></form-textarea-molecule>
     <div class="button-wrapper">
-      <button-atom type="submit" :loading="loading">Modifier</button-atom>
+      <button-atom type="submit" :loading="loading">Créer</button-atom>
     </div>
   </form>
 </template>
@@ -74,7 +75,7 @@ import FormInputMolecule from "#/molecules/FormInput.vue";
 import FormTextareaMolecule from "#/molecules/FormTextarea.vue";
 import ButtonAtom from "#/atoms/Button.vue";
 
-import { computed, reactive } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useExperienceStore } from "@/store/experienceStore";
 import { experienceSchema } from "@/validations/experienceSchema";
@@ -95,6 +96,8 @@ const experienceData = reactive({
   to: null,
   tasks: null,
 });
+
+const currentDate = ref(new Date().toISOString().slice(0, 10));
 
 const dateFrom = computed({
   get: () =>
@@ -122,7 +125,7 @@ const createExperience = async () => {
   try {
     validationErrors.value["experienceCreationForm"] = {};
     const isValid = await validateData(
-      ["experienceCreationForm"],
+      "experienceCreationForm",
       experienceSchema,
       experienceData
     );

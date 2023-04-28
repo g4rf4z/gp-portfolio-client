@@ -8,6 +8,6 @@
 
 <style lang="scss" scoped>
 article {
-  @apply p-5 bg-slate-800;
+  @apply p-5 rounded bg-slate-800;
 }
 </style>

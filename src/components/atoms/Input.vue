@@ -19,10 +19,11 @@ const props = defineProps({
   modelValue: { type: [Date, File, Number, String], default: null },
   placeholder: { type: String, default: null },
   min: { type: Number, default: null },
-  max: { type: Number, default: null },
+  max: { type: [Number, String], default: null },
 });
 
 const emit = defineEmits(["input", "update:modelValue"]);
+
 const handleInput = (event) => {
   if (props.min !== null && event.target.value < props.min) {
     event.target.value = props.min;
@@ -40,7 +41,7 @@ input[type="number"],
 input[type="email"],
 input[type="date"],
 input[type="password"] {
-  @apply h-10 w-full p-2 bg-slate-800 duration-300;
+  @apply h-10 w-full p-2 rounded bg-slate-800 duration-300;
   @apply hover:bg-slate-700;
 }
 

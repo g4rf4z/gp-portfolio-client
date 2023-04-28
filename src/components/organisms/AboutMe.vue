@@ -2,20 +2,20 @@
   <article>
     <div class="content-wrapper">
       <p>
-        Bonjour, je m'appelle Grégoire. J'adore créer des outils numériques pour
-        vous faciliter la vie sur internet.
+        Bonjour, je m'appelle Grégoire et j'adore créer des outils numériques
+        pour vous faciliter la vie sur internet.
       </p>
       <p>
         Ma passion pour la programmation est née en Mai 2020, lorsque j'ai créé
-        un site web e-commerce à l'aide de
-        <link-atom is="a" to="https://www.shopify.com/">Shopify</link-atom>. Je
-        me suis alors interressé de près à son fonctionnement. Comme beaucoup de
-        développeurs avant moi, j'ai débuté mon apprentissage en autoditacte.
+        un site web e-commerce avec
+        <link-atom is="a" to="https://www.shopify.com/">Shopify</link-atom>.
+        Comme beaucoup de développeurs avant moi, j'ai débuté mon apprentissage
+        en autoditacte.
       </p>
       <p>
-        En Septembre 2021, je commençais un titre professionnel développeur web
-        et web mobile. En Juin 2022, je quittais mon emploi de Responsable
-        Recherche & Développement chez
+        En Juillet 2021, je commençais un titre professionnel de développeur web
+        et web mobile. En Juin 2022, je quittais mon emploi de responsable
+        recherche et développement chez
         <link-atom is="a" to="https://www.augusteetferdinand.com/"
           >Auguste & Ferdinand</link-atom
         >
@@ -27,13 +27,13 @@
         inchangés : continuer mon apprentissage pour pouvoir vous offrir le
         meilleur de moi-même.
       </p>
-      <p>
-        Je vous invite à cliquer sur le bouton ci-dessous afin d'en savoir plus
-        sur les technologies que j'utilise.
-      </p>
       <div class="button-wrapper">
-        <link-atom to="/skills" href="/skills" target="">
-          <button-atom>Mes compétences</button-atom>
+        <link-atom
+          to=""
+          href="/src/assets/documents/cv_gregoire_pinte.pdf"
+          target="_blank"
+        >
+          <button-atom class="download-button">Mon CV</button-atom>
         </link-atom>
       </div>
     </div>
@@ -61,7 +61,7 @@ article {
     @apply lg:p-0;
 
     p {
-      @apply pb-5 text-justify;
+      @apply pb-5;
 
       a {
         @apply font-mono text-teal-200;
@@ -70,8 +70,8 @@ article {
     }
 
     .button-wrapper {
-      @apply flex justify-center;
-      @apply lg:block;
+      @apply flex justify-between;
+      @apply lg:flex;
     }
   }
 
@@ -83,11 +83,11 @@ article {
       animation: float 5s ease-in-out infinite;
 
       img {
-        @apply h-80 w-80;
+        @apply h-80 w-80 rounded;
       }
 
       .frame {
-        @apply h-full w-full absolute top-5 left-5 border border-teal-200 bg-teal-200/25 -z-10;
+        @apply h-full w-full absolute top-5 left-5 border rounded border-teal-200 -z-10;
       }
     }
   }

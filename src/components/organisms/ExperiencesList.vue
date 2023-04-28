@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="(experience, index) in experiences" :key="index">
+    <li v-for="(experience, index) in sortedExperiences" :key="index">
       <experience-card-molecule
         :id="experience.id"
         :position="experience.position"
@@ -33,7 +33,11 @@ import { useAuthenticationStore } from "@/store/authenticationStore";
 const experienceStore = useExperienceStore();
 const authenticationStore = useAuthenticationStore();
 
-const experiences = computed(() => experienceStore.experiences);
+const sortedExperiences = computed(() =>
+  experienceStore.experiences
+    .slice()
+    .sort((a, b) => new Date(b.from) - new Date(a.from))
+);
 const session = computed(() => authenticationStore.session);
 const admin = computed(() => authenticationStore.admin);
 

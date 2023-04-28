@@ -14,6 +14,8 @@ import {
   faPenToSquare as fasPenToSquare,
   faTrash as fasTrash,
   faPlus as fasPlus,
+  faCodeFork as fasCodeFork,
+  faStar as fasStar,
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
@@ -36,6 +38,8 @@ library.add(
   fasPenToSquare,
   fasTrash,
   fasPlus,
+  fasCodeFork,
+  fasStar,
 
   fabGithub,
   fabLinkedin,
