@@ -30,7 +30,7 @@
       <div class="button-wrapper">
         <link-atom
           to=""
-          href="https://www.cjoint.com/data3/MDCtYkmQORA_cv-gregoire-pinte.pdf"
+          href="https://drive.google.com/file/d/1s2S45qVA8xL_S1sPdD0-hOuiCjfLVeqh/view"
           target="_blank"
         >
           <button-atom class="download-button">Mon CV</button-atom>

@@ -92,8 +92,15 @@ const routes = [
       requiresAuthentication: false,
     },
   },
+  // Catch URL that does not match any defined route.
+  // Redirect to "/page-not-found".
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/page-not-found",
+  },
 ];
 
+// Create a router with web-based history.
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
@@ -106,19 +113,20 @@ const router = createRouter({
   },
 });
 
+// Check if a user must be authenticated to access a specific route.
+// Redirect to "/login" if authentication is required and no session is found.
 const checkAuthentication = async (to, from, next) => {
   const authenticationStore = useAuthenticationStore();
   const session = computed(() => authenticationStore.session);
 
   if (to.meta.requiresAuthentication === true) {
     if (!session.value) {
-      const foundSession = await authenticationStore.retrieveSession();
-      if (!foundSession) return next("/page-not-found");
+      return next("/login");
     }
   }
   next();
 };
 
-router.beforeEach(checkAuthentication);
+router.beforeResolve(checkAuthentication);
 
 export default router;
