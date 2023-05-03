@@ -119,6 +119,17 @@ const checkAuthentication = async (to, from, next) => {
   const authenticationStore = useAuthenticationStore();
   const session = computed(() => authenticationStore.session);
 
+  // Wait for the session to recover before continuing.
+  if (!session.value) {
+    try {
+      await authenticationStore.retrieveSession();
+    } catch (error) {
+      if (error.response && error.response.status !== 403) {
+        console.error(error);
+      }
+    }
+  }
+
   if (to.meta.requiresAuthentication === true) {
     if (!session.value) {
       return next("/login");
@@ -127,6 +138,6 @@ const checkAuthentication = async (to, from, next) => {
   next();
 };
 
-router.beforeResolve(checkAuthentication);
+router.beforeEach(checkAuthentication);
 
 export default router;
