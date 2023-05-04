@@ -13,12 +13,14 @@
       <p>Loading...</p>
     </template>
   </suspense>
+  <email-molecule></email-molecule>
   <footer-template></footer-template>
 </template>
 
 <script setup>
 import HeaderTemplate from "#/templates/Header.vue";
 import SocialNavOrganism from "#/organisms/SocialNav.vue";
+import EmailMolecule from "#/molecules/Email.vue";
 import FooterTemplate from "#/templates/Footer.vue";
 
 import { useAuthenticationStore } from "@/store/authenticationStore";

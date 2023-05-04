@@ -29,9 +29,9 @@
       </p>
       <div class="button-wrapper">
         <link-atom
-          to=""
-          href="https://drive.google.com/file/d/1s2S45qVA8xL_S1sPdD0-hOuiCjfLVeqh/view"
-          target="_blank"
+          is="a"
+          to="https://drive.google.com/file/d/1s2S45qVA8xL_S1sPdD0-hOuiCjfLVeqh/view"
+          aria-label="Voir le CV de Grégoire Pinte"
         >
           <button-atom class="download-button">Mon CV</button-atom>
         </link-atom>
