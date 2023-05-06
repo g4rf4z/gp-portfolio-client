@@ -46,7 +46,7 @@ html {
 
 body {
   @apply px-5 text-slate-400 bg-slate-900;
-  @apply sm:px-20 xl:px-40;
+  @apply sm:px-28 lg:px-40;
 
   &.nav-is-toggled {
     @apply overflow-hidden;
