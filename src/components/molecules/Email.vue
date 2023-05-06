@@ -15,15 +15,14 @@ import LinkAtom from "#/atoms/Link.vue";
 
 <style lang="scss" scoped>
 aside {
-  @apply hidden;
-  @apply sm:block pb-10 sm:fixed sm:right-5 sm:bottom-20 sm:text-indigo-200;
+  @apply hidden sm:block pb-10 sm:fixed sm:right-10 sm:bottom-20 sm:text-indigo-200;
 
   a {
     writing-mode: vertical-rl;
-    @apply font-mono duration-300;
+    @apply font-mono tracking-widest duration-300;
 
     &:hover {
-      @apply text-teal-200 -translate-y-2;
+      @apply text-teal-200 -translate-y-1;
     }
   }
 
