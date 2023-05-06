@@ -4,10 +4,12 @@
   <h2>Je construis des choses pour le web.</h2>
   <p>
     Actuellement en formation développeur web et web mobile chez
-    <link-atom is="a" to="https://www.educatel.fr/">Educatel</link-atom>, j'ai
-    le plaisir de vous présenter mon portfolio professionnel, réalisé dans le
-    cadre de mon stage de fin d'études et avec le soutien de
-    <link-atom is="a" to="https://www.lille-esport.gg/">Lille Esport</link-atom
+    <link-atom is="a" to="https://www.educatel.fr/" class="external-link"
+      >Educatel</link-atom
+    >, j'ai le plaisir de vous présenter mon portfolio professionnel, réalisé
+    dans le cadre de mon stage de fin d'études et avec le soutien de
+    <link-atom is="a" to="https://www.lille-esport.gg/" class="external-link"
+      >Lille Esport</link-atom
     >.
   </p>
   <div class="button-wrapper">
@@ -41,10 +43,5 @@ h3 {
 p {
   @apply w-full py-5;
   @apply xl:w-10/12 2xl:w-5/12;
-
-  a {
-    @apply font-mono text-teal-200;
-    @apply hover:underline;
-  }
 }
 </style>

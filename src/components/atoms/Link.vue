@@ -7,6 +7,7 @@
     :target="is === 'a' ? '_blank' : ''"
     :name="name"
     :aria-label="ariaLabel"
+    :class="class"
   >
     <slot></slot>
   </component>
@@ -21,6 +22,7 @@ const props = defineProps({
   rel: { type: String, default: "nofollow" },
   name: { type: String, default: null },
   ariaLabel: { type: String, default: null },
+  class: { type: String, default: null },
 });
 
 const href = computed(() => {
@@ -31,3 +33,22 @@ const to = computed(() => {
   return props.is === "router-link" ? props.to : null;
 });
 </script>
+
+<style lang="scss" scoped>
+.external-link {
+  @apply inline-block relative font-mono text-teal-200;
+}
+
+.external-link::after {
+  content: "";
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+  @apply h-[1.5px] w-full absolute bottom-0 left-0 bg-teal-200;
+}
+
+.external-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+</style>

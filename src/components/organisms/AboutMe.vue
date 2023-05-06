@@ -8,20 +8,27 @@
       <p>
         Ma passion pour la programmation est née en Mai 2020, lorsque j'ai créé
         un site web e-commerce avec
-        <link-atom is="a" to="https://www.shopify.com/">Shopify</link-atom>.
-        Comme beaucoup de développeurs avant moi, j'ai débuté mon apprentissage
-        en autoditacte.
+        <link-atom is="a" to="https://www.shopify.com/" class="external-link"
+          >Shopify</link-atom
+        >. Comme beaucoup de développeurs avant moi, j'ai débuté mon
+        apprentissage en autoditacte.
       </p>
       <p>
         En Juillet 2021, je commençais un titre professionnel de développeur web
         et web mobile. En Juin 2022, je quittais mon emploi de responsable
         recherche et développement chez
-        <link-atom is="a" to="https://www.augusteetferdinand.com/"
+        <link-atom
+          is="a"
+          to="https://www.augusteetferdinand.com/"
+          class="external-link"
           >Auguste & Ferdinand</link-atom
         >
         pour me consacrer entièrement à ma reconversion professionnelle. J'ai eu
         le privilège de faire mon stage de fin d'étude au sein de la start-up
-        <link-atom is="a" to="https://www.lille-esport.gg/"
+        <link-atom
+          is="a"
+          to="https://www.lille-esport.gg/"
+          class="external-link"
           >Lille Esport</link-atom
         >. Malgré ce changement de carrière atypique, mes objectifs restent
         inchangés : continuer mon apprentissage pour pouvoir vous offrir le
@@ -62,11 +69,6 @@ article {
 
     p {
       @apply pb-5;
-
-      a {
-        @apply font-mono text-teal-200;
-        @apply hover:underline;
-      }
     }
 
     .button-wrapper {
