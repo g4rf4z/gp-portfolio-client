@@ -26,6 +26,11 @@ const links = [
     icon: "github",
   },
   {
+    to: "https://www.instagram.com/gregoire.pinte",
+    name: "Instagram",
+    icon: "instagram",
+  },
+  {
     to: "https://www.linkedin.com/in/gr%C3%A9goire-pinte-02ba65209",
     name: "LinkedIn",
     icon: "linkedin",

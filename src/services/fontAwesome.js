@@ -19,9 +19,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import {
-  faGithub as fabGithub,
-  faLinkedin as fabLinkedin,
   faDribbble as fabDribbble,
+  faGithub as fabGithub,
+  faInstagram as fabInstagram,
+  faLinkedin as fabLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 
 library.add(
@@ -41,7 +42,8 @@ library.add(
   fasCodeFork,
   fasStar,
 
+  fabDribbble,
   fabGithub,
-  fabLinkedin,
-  fabDribbble
+  fabInstagram,
+  fabLinkedin
 );
