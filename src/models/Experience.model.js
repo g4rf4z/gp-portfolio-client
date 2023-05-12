@@ -1,5 +1,6 @@
-import { typeConvertor } from "../utils/typeConvertor";
 import { Global } from "./Global.model";
+
+import { typeConvertor } from "../utils/typeConvertor";
 import { dateToString } from "../utils/dateConvertor";
 
 export class Experience extends Global {
