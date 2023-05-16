@@ -9,7 +9,7 @@ const props = defineProps({
   is: { type: String, default: "h1" },
   sentence: {
     type: Array,
-    default: () => ["Grégoire Pinte.", "Étudiant.", "Développeur."],
+    default: () => ["Grégoire Pinte.", "Développeur.", "Freelance."],
   },
 });
 
