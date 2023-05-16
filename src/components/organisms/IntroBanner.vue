@@ -3,13 +3,25 @@
   <animated-typewriter-atom></animated-typewriter-atom>
   <h2>Je construis des choses pour le web.</h2>
   <p>
-    Actuellement en formation développeur web et web mobile chez
-    <link-atom is="a" to="https://www.educatel.fr/" class="external-link"
-      >Educatel</link-atom
-    >, j'ai le plaisir de vous présenter mon portfolio professionnel, réalisé
-    dans le cadre de mon stage de fin d'études et avec le soutien de
-    <link-atom is="a" to="https://www.lille-esport.gg/" class="external-link"
-      >Lille Esport</link-atom
+    Développeur full stack expert
+    <link-atom is="a" to="https://vuejs.org" class="external-link"
+      >Vue.js</link-atom
+    >
+    spécialisé dans la conception d'expériences numériques intuitives et
+    performantes. Envie de collaborer ? N'hésitez pas à me contacter depuis la
+    page de contact de mon portfolio. Retrouvez tous mes services sur
+    <link-atom
+      is="a"
+      to="https://fr.fiverr.com/gregoirepte"
+      class="external-link"
+      >Fiverr</link-atom
+    >
+    et
+    <link-atom
+      is="a"
+      to="https://www.malt.fr/profile/gregoirepinte"
+      class="external-link"
+      >Malt</link-atom
     >.
   </p>
   <div class="button-wrapper">
