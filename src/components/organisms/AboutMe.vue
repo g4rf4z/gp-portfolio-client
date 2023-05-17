@@ -31,11 +31,11 @@
           to="https://www.lille-esport.gg/"
           class="external-link"
           >Lille Esport</link-atom
-        >. Aujourd'hui, je suis fier de mettre mes compétences au service de vos
-        idées.
+        >.
       </p>
       <p>
-        N'hésitez pas à me contacter et à me faire part de vos projets.
+        Aujourd'hui, je suis fier de mettre mes compétences au service de vos
+        idées. N'hésitez pas à me contacter et à me faire part de vos projets.
         Ensemble, nous pouvons créer une expérience numérique inoubliable !
       </p>
       <div class="button-wrapper">
