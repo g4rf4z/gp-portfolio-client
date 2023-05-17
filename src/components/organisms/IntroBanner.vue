@@ -9,7 +9,7 @@
     >
     spécialisé dans la conception d'expériences numériques intuitives et
     performantes. Envie de collaborer ? N'hésitez pas à me contacter depuis la
-    page de contact de mon portfolio. Retrouvez tous mes services sur
+    de page contact. Retrouvez également mes services sur
     <link-atom
       is="a"
       to="https://fr.fiverr.com/gregoirepte"
