@@ -13,12 +13,14 @@
       <p>Loading...</p>
     </template>
   </suspense>
+  <email-molecule></email-molecule>
   <footer-template></footer-template>
 </template>
 
 <script setup>
 import HeaderTemplate from "#/templates/Header.vue";
 import SocialNavOrganism from "#/organisms/SocialNav.vue";
+import EmailMolecule from "#/molecules/Email.vue";
 import FooterTemplate from "#/templates/Footer.vue";
 
 import { useAuthenticationStore } from "@/store/authenticationStore";
@@ -39,12 +41,12 @@ retrieveSession();
 
 <style lang="scss">
 html {
-  @apply scroll-smooth select-none;
+  @apply scroll-smooth;
 }
 
 body {
   @apply px-5 text-slate-400 bg-slate-900;
-  @apply sm:px-20 xl:px-40;
+  @apply sm:px-28 lg:px-40;
 
   &.nav-is-toggled {
     @apply overflow-hidden;
@@ -64,6 +66,19 @@ body {
 
 // ------------------------- Scrollbar
 ::-webkit-scrollbar {
-  @apply hidden;
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply my-1 bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded bg-slate-400;
+}
+
+// ------------------------- Selection
+::selection {
+  @apply bg-teal-200/25;
 }
 </style>

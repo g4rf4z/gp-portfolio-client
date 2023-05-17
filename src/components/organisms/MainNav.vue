@@ -89,7 +89,7 @@ const logout = async () => {
 
 <style lang="scss" scoped>
 nav {
-  @apply h-full w-full px-5 flex items-center justify-between relative z-50;
+  @apply h-full w-full px-8 flex items-center justify-between relative z-50;
 
   .logo {
     @apply text-2xl text-teal-200;

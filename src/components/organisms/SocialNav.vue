@@ -1,5 +1,5 @@
 <template>
-  <nav :class="{ active: isActive }" @click="toggleMenu">
+  <aside>
     <ul>
       <li v-for="(link, index) in links" :key="index">
         <link-atom
@@ -12,55 +12,57 @@
         </link-atom>
       </li>
     </ul>
-  </nav>
+  </aside>
 </template>
 
 <script setup>
 import LinkAtom from "#/atoms/Link.vue";
 import IconAtom from "#/atoms/Icon.vue";
 
-import { ref } from "vue";
-
 const links = [
   {
-    to: "https://github.com/g4rf4z/",
+    to: "https://github.com/g4rf4z",
     name: "GitHub",
     icon: "github",
   },
   {
-    to: "https://www.linkedin.com/in/gr%C3%A9goire-pinte-02ba65209/",
+    to: "https://www.instagram.com/gregoire.pinte",
+    name: "Instagram",
+    icon: "instagram",
+  },
+  {
+    to: "https://www.linkedin.com/in/gr%C3%A9goire-pinte-02ba65209",
     name: "LinkedIn",
     icon: "linkedin",
   },
   {
-    to: "https://dribbble.com/g4rf4z/",
+    to: "https://dribbble.com/g4rf4z",
     name: "Dribbble",
     icon: "dribbble",
   },
 ];
-
-const isActive = ref();
-
-const toggleMenu = () => {
-  isActive.value = !isActive.value;
-};
 </script>
 
 <style lang="scss" scoped>
-nav {
-  @apply p-2 fixed top-1/2 -left-12 -translate-y-1/2 z-40 rounded-r bg-slate-950 duration-300;
+aside {
+  @apply hidden sm:block pb-10 sm:fixed sm:left-10 sm:bottom-20 sm:text-indigo-200;
 
   ul {
-    @apply space-y-2;
+    @apply space-y-5;
 
     a {
-      @apply h-10 w-10 flex items-center justify-center text-indigo-200 duration-300;
-      @apply hover:cursor-pointer hover:text-teal-200;
+      writing-mode: vertical-lr;
+      @apply duration-300;
+
+      &:hover {
+        @apply text-teal-200 -translate-y-1;
+      }
     }
   }
-}
 
-.active {
-  @apply left-0 duration-300;
+  &::after {
+    content: "";
+    @apply h-full w-[1px] absolute bottom-0 left-[44%] bg-indigo-200 translate-y-full;
+  }
 }
 </style>

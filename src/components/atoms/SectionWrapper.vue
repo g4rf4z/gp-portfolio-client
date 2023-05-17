@@ -26,6 +26,11 @@ section {
     span {
       @apply mr-2 font-mono text-teal-200;
     }
+
+    &:after {
+      content: "";
+      @apply h-[1px] w-[50px] sm:w-[100px] inline-block relative left-10 bottom-[18%] bg-indigo-200;
+    }
   }
 }
 </style>
