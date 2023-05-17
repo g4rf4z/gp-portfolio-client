@@ -57,7 +57,7 @@
 <script setup>
 import LinkAtom from "#/atoms/Link.vue";
 import ButtonAtom from "#/atoms/Button.vue";
-import PortraitAtom from "#/atoms/portrait.vue";
+import PortraitAtom from "#/atoms/Portrait.vue";
 </script>
 
 <style lang="scss" scoped>
