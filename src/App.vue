@@ -41,7 +41,7 @@ retrieveSession();
 
 <style lang="scss">
 html {
-  @apply scroll-smooth select-none;
+  @apply scroll-smooth;
 }
 
 body {
@@ -66,6 +66,19 @@ body {
 
 // ------------------------- Scrollbar
 ::-webkit-scrollbar {
-  @apply hidden;
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply my-1 bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply rounded bg-slate-400;
+}
+
+// ------------------------- Selection
+::selection {
+  @apply bg-teal-200/25;
 }
 </style>
