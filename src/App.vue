@@ -22,21 +22,6 @@ import HeaderTemplate from "#/templates/Header.vue";
 import SocialNavOrganism from "#/organisms/SocialNav.vue";
 import EmailMolecule from "#/molecules/Email.vue";
 import FooterTemplate from "#/templates/Footer.vue";
-
-import { useAuthenticationStore } from "@/store/authenticationStore";
-
-const authenticationStore = useAuthenticationStore();
-
-const retrieveSession = async () => {
-  try {
-    await authenticationStore.retrieveSession();
-  } catch (error) {
-    if (error.response && error.response.status !== 403) {
-      console.error(error);
-    }
-  }
-};
-retrieveSession();
 </script>
 
 <style lang="scss">

@@ -113,28 +113,29 @@ const router = createRouter({
   },
 });
 
-// Check if a user must be authenticated to access a specific route.
-// Redirect to "/login" if authentication is required and no session is found.
+let isSessionRetrieved = false;
+
 const checkAuthentication = async (to, from, next) => {
   const authenticationStore = useAuthenticationStore();
   const session = computed(() => authenticationStore.session);
 
-  // Wait for the session to recover before continuing.
-  if (!session.value) {
-    try {
-      await authenticationStore.retrieveSession();
-    } catch (error) {
-      if (error.response && error.response.status !== 403) {
-        console.error(error);
+  if (!isSessionRetrieved) {
+    isSessionRetrieved = true;
+    if (!session.value) {
+      try {
+        await authenticationStore.retrieveSession();
+      } catch (error) {
+        if (error.response && error.response.status !== 403) {
+          console.error(error);
+        }
       }
     }
   }
 
-  if (to.meta.requiresAuthentication === true) {
-    if (!session.value) {
-      return next("/login");
-    }
+  if (to.meta.requiresAuthentication === true && !session.value) {
+    return next("/login");
   }
+
   next();
 };
 
