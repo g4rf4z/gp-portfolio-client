@@ -17,24 +17,23 @@
 </template>
 
 <script setup>
-import IconAtom from "#/atoms/Icon.vue";
+import IconAtom from '#/atoms/Icon.vue';
 
 const props = defineProps({
-  type: { type: String, default: "button" },
+  type: { type: String, default: 'button' },
   loading: { type: Boolean, default: false },
   disabled: { type: Boolean, default: false },
-  class: { type: String, dedault: null },
+  class: { type: String, default: null },
 });
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click']);
 
 const handleClick = (event) => {
-  emit("click", event);
+  emit('click', event);
 };
 </script>
 
 <style lang="scss" scoped>
-// ------------------------- Base button
 button {
   @apply py-3 px-5 rounded border border-teal-200 font-mono text-teal-200 duration-300;
   @apply hover:bg-teal-200/10;
@@ -45,8 +44,7 @@ button {
   }
 }
 
-// ------------------------- Download button
-button[class="download-button"] {
+button[class='download-button'] {
   @apply text-slate-900 bg-teal-200;
   @apply hover:text-teal-200 hover:bg-slate-900;
 }

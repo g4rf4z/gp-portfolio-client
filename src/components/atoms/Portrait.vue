@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const card = ref(null);
 const picture = ref(null);
@@ -33,22 +33,22 @@ const handleMousemove = (event) => {
 
   lastCall = now; // Update the value of lastCall with the value of now.
 
-  let clientRect = card.value.getBoundingClientRect();
+  const clientRect = card.value.getBoundingClientRect();
 
-  let x = event.clientX - clientRect.x;
-  let y = event.clientY - clientRect.y;
+  const x = event.clientX - clientRect.x;
+  const y = event.clientY - clientRect.y;
 
   // Calculate the middle of the element.
-  let midCardWidth = clientRect.width / 2;
-  let midCardHeight = clientRect.height / 2;
+  const midCardWidth = clientRect.width / 2;
+  const midCardHeight = clientRect.height / 2;
 
   // Calculate rotation angles for 3D transformation.
-  let angleY = -(x - midCardWidth) / 8;
-  let angleX = (y - midCardHeight) / 8;
+  const angleY = -(x - midCardWidth) / 8;
+  const angleX = (y - midCardHeight) / 8;
 
   // Calculate coordinates for the radial gradient of the glow effect.
-  let glowX = (x / clientRect.width) * 100;
-  let glowY = (y / clientRect.height) * 100;
+  const glowX = (x / clientRect.width) * 100;
+  const glowY = (y / clientRect.height) * 100;
 
   picture.value.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.1)`;
   glow.value.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.1)`;
@@ -58,7 +58,7 @@ const handleMousemove = (event) => {
 const handleMouseleave = () => {
   picture.value.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
   glow.value.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
-  glow.value.style.background = "";
+  glow.value.style.background = '';
 };
 </script>
 
@@ -69,10 +69,10 @@ const handleMouseleave = () => {
 
   picture {
     @apply h-full w-full rounded overflow-hidden duration-200;
-  }
 
-  picture img {
-    @apply h-full w-full object-cover;
+    img {
+      @apply h-full w-full object-cover;
+    }
   }
 
   .glow {

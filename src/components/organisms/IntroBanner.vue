@@ -3,11 +3,10 @@
   <animated-typewriter-atom></animated-typewriter-atom>
   <h2>Je construis des choses pour le web.</h2>
   <p>
-    Développeur full stack expert
+    Développeur front-end expert
     <link-atom is="a" to="https://vuejs.org" class="external-link"
       >Vue.js</link-atom
-    >
-    spécialisé dans la conception d'expériences numériques intuitives et
+    >, spécialisé dans la conception d'expériences numériques intuitives et
     performantes. Envie de collaborer ? N'hésitez pas à me contacter depuis la
     page contact. Retrouvez également mes services sur
     <link-atom
@@ -32,9 +31,9 @@
 </template>
 
 <script setup>
-import AnimatedTypewriterAtom from "#/atoms/AnimatedTypewriter.vue";
-import LinkAtom from "#/atoms/Link.vue";
-import ButtonAtom from "#/atoms/Button.vue";
+import AnimatedTypewriterAtom from '#/atoms/AnimatedTypewriter.vue';
+import LinkAtom from '#/atoms/Link.vue';
+import ButtonAtom from '#/atoms/Button.vue';
 </script>
 
 <style lang="scss" scoped>

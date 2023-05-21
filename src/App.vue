@@ -1,6 +1,7 @@
 <template>
   <header-template></header-template>
   <social-nav-organism></social-nav-organism>
+  <spotlight-atom></spotlight-atom>
   <suspense>
     <template #default>
       <router-view v-slot="{ Component }">
@@ -18,10 +19,11 @@
 </template>
 
 <script setup>
-import HeaderTemplate from "#/templates/Header.vue";
-import SocialNavOrganism from "#/organisms/SocialNav.vue";
-import EmailMolecule from "#/molecules/Email.vue";
-import FooterTemplate from "#/templates/Footer.vue";
+import HeaderTemplate from '#/templates/Header.vue';
+import SocialNavOrganism from '#/organisms/SocialNav.vue';
+import SpotlightAtom from '#/atoms/Spotlight.vue';
+import EmailMolecule from '#/molecules/Email.vue';
+import FooterTemplate from '#/templates/Footer.vue';
 </script>
 
 <style lang="scss">
@@ -38,7 +40,7 @@ body {
   }
 }
 
-// ------------------------- Transition
+// ------------------------- Transition ------------------------
 .v-enter-active,
 .v-leave-active {
   @apply transition-opacity duration-300;
@@ -49,20 +51,7 @@ body {
   @apply opacity-0;
 }
 
-// ------------------------- Scrollbar
-::-webkit-scrollbar {
-  @apply w-2;
-}
-
-::-webkit-scrollbar-track {
-  @apply my-1 bg-transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply rounded bg-slate-400;
-}
-
-// ------------------------- Selection
+// ------------------------- Selection -------------------------
 ::selection {
   @apply bg-teal-200/25;
 }
