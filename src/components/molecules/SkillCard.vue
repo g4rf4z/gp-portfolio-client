@@ -2,8 +2,8 @@
   <card-wrapper-atom class="skill-card">
     <div v-if="session && admin" class="icons-wrapper">
       <icon-link-molecule
-        @mouseover="enableIconBounce"
-        @mouseout="disableIconBounce"
+        @mouseover="toggleBounce"
+        @mouseout="toggleBounce"
         :bounce="bounce"
         :to="`/update-skill/${id}`"
         weight="fas"
@@ -13,8 +13,8 @@
       ></icon-link-molecule>
       <icon-atom
         @click="deleteSkill(id)"
-        @mouseover="enableIconShake"
-        @mouseout="disableIconShake"
+        @mouseover="toggleShake"
+        @mouseout="toggleShake"
         :shake="shake"
         weight="fas"
         icon="trash"
@@ -34,14 +34,16 @@
 </template>
 
 <script setup>
-import CardWrapperAtom from "#/atoms/CardWrapper.vue";
-import IconLinkMolecule from "#/molecules/IconLink.vue";
-import IconAtom from "#/atoms/Icon.vue";
-import ProgressBarAtom from "#/atoms/ProgressBar.vue";
+import CardWrapperAtom from '#/atoms/CardWrapper.vue';
+import IconLinkMolecule from '#/molecules/IconLink.vue';
+import IconAtom from '#/atoms/Icon.vue';
+import ProgressBarAtom from '#/atoms/ProgressBar.vue';
 
-import { computed, ref, watch } from "vue";
-import { useAuthenticationStore } from "@/store/authenticationStore";
-import { useSkillStore } from "@/store/skillStore";
+import { computed, ref, watch } from 'vue';
+import { useAuthenticationStore } from '@/store/authenticationStore';
+import { useSkillStore } from '@/store/skillStore';
+
+import { useToggle } from '@/utils/useToggle';
 
 const props = defineProps({
   id: { type: String, required: true },
@@ -56,13 +58,8 @@ const skillStore = useSkillStore();
 const session = computed(() => authenticationStore.session);
 const admin = computed(() => authenticationStore.admin);
 
-const bounce = ref();
-const shake = ref();
-const toggle = (variable) => (variable.value = !variable.value);
-const enableIconBounce = () => toggle(bounce);
-const disableIconBounce = () => toggle(bounce);
-const enableIconShake = () => toggle(shake);
-const disableIconShake = () => toggle(shake);
+const { animation: bounce, toggleAnimation: toggleBounce } = useToggle();
+const { animation: shake, toggleAnimation: toggleShake } = useToggle();
 
 const deleteSkill = async (id) => {
   try {

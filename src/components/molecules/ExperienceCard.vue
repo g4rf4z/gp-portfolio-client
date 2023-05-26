@@ -2,42 +2,48 @@
   <card-wrapper-atom class="experience-card">
     <div v-if="session && admin" class="icons-wrapper">
       <icon-link-molecule
-        @mouseover="enableIconBounce"
-        @mouseout="disableIconBounce"
         :bounce="bounce"
         :to="`/update-experience/${id}`"
         weight="fas"
         icon="pen-to-square"
         size="1x"
         class="update-icon"
+        @mouseover="toggleBounce"
+        @mouseout="toggleBounce"
       ></icon-link-molecule>
       <icon-atom
-        @mouseover="enableIconShake"
-        @mouseout="disableIconShake"
-        @click="deleteExperience(id)"
         :shake="shake"
         weight="fas"
         icon="trash"
         size="1x"
         class="delete-icon"
+        @mouseover="toggleShake"
+        @mouseout="toggleShake"
+        @click="deleteExperience(id)"
       ></icon-atom>
     </div>
-    <h5>{{ position }}</h5>
-    <p class="company">{{ company }}</p>
-    <p>{{ from }} - {{ to }}</p>
-    <p>{{ city }}, {{ country }}</p>
-    <p class="description">{{ tasks }}</p>
+    <div class="informations-wrapper">
+      <h4>{{ position }} · {{ company }}</h4>
+      <p>{{ from }} · {{ to }}</p>
+      <p>{{ city }} · {{ country }}</p>
+      <p class="tasks">{{ tasks }}</p>
+    </div>
+    <div class="technologies-wrapper">
+      <h5>{{ technology }}</h5>
+    </div>
   </card-wrapper-atom>
 </template>
 
 <script setup>
-import CardWrapperAtom from "#/atoms/CardWrapper.vue";
-import IconAtom from "#/atoms/Icon.vue";
-import IconLinkMolecule from "#/molecules/IconLink.vue";
+import CardWrapperAtom from '#/atoms/CardWrapper.vue';
+import IconAtom from '#/atoms/Icon.vue';
+import IconLinkMolecule from '#/molecules/IconLink.vue';
 
-import { computed, ref } from "vue";
-import { useAuthenticationStore } from "@/store/authenticationStore";
-import { useExperienceStore } from "@/store/experienceStore";
+import { computed } from 'vue';
+import { useAuthenticationStore } from '@/store/authenticationStore';
+import { useExperienceStore } from '@/store/experienceStore';
+
+import { useToggle } from '@/utils/useToggle';
 
 const props = defineProps({
   id: { type: String, required: true },
@@ -48,6 +54,7 @@ const props = defineProps({
   from: { type: String, required: true },
   to: { type: String, required: true },
   tasks: { type: [Array, String], required: true },
+  technology: { type: String, required: true },
 });
 
 const authenticationStore = useAuthenticationStore();
@@ -56,13 +63,8 @@ const experienceStore = useExperienceStore();
 const session = computed(() => authenticationStore.session);
 const admin = computed(() => authenticationStore.admin);
 
-const bounce = ref(),
-  shake = ref();
-const toggle = (variable) => (variable.value = !variable.value);
-const enableIconBounce = () => toggle(bounce);
-const disableIconBounce = () => toggle(bounce);
-const enableIconShake = () => toggle(shake);
-const disableIconShake = () => toggle(shake);
+const { animation: bounce, toggleAnimation: toggleBounce } = useToggle();
+const { animation: shake, toggleAnimation: toggleShake } = useToggle();
 
 const deleteExperience = async (id) => {
   try {
@@ -91,16 +93,24 @@ const deleteExperience = async (id) => {
     }
   }
 
-  h5 {
-    @apply font-medium text-xl;
+  .informations-wrapper {
+    @apply select-none;
+
+    h4 {
+      @apply font-bold;
+    }
+
+    .tasks {
+      @apply mt-5 whitespace-pre-wrap;
+    }
   }
 
-  .company {
-    @apply font-mono text-teal-200;
-  }
+  .technologies-wrapper {
+    @apply mt-5 space-x-2;
 
-  .description {
-    @apply mt-5 whitespace-pre-wrap;
+    h5 {
+      @apply px-4 inline-block rounded-full text-teal-200 bg-slate-800;
+    }
   }
 }
 </style>
