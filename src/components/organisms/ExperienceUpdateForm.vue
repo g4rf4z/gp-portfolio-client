@@ -56,13 +56,22 @@
       @input="resetError('to')"
     ></form-input-molecule>
     <form-textarea-molecule
-      label="Descriptif"
+      label="Tâche(s)"
       id="tasks"
       name="tasks"
       v-model="experience.tasks"
-      placeholder="Décrivez vos missions en quelques lignes..."
+      placeholder="Décrivez les tâches effectuées..."
       :error-message="validationErrors.experienceUpdateForm?.tasks"
       @input="resetError('tasks')"
+    ></form-textarea-molecule>
+    <form-textarea-molecule
+      label="Technologie(s)"
+      id="technologies"
+      name="technologies"
+      v-model="experience.technologies"
+      placeholder="Renseignez les technologies utilisées..."
+      :error-message="validationErrors.experienceUpdateForm?.technologies"
+      @input="resetError('technologies')"
     ></form-textarea-molecule>
     <div class="button-wrapper">
       <button-atom type="submit" :loading="loading">Modifier</button-atom>
@@ -71,15 +80,15 @@
 </template>
 
 <script setup>
-import FormInputMolecule from "#/molecules/FormInput.vue";
-import FormTextareaMolecule from "#/molecules/FormTextarea.vue";
-import ButtonAtom from "#/atoms/Button.vue";
+import FormInputMolecule from '#/molecules/FormInput.vue';
+import FormTextareaMolecule from '#/molecules/FormTextarea.vue';
+import ButtonAtom from '#/atoms/Button.vue';
 
-import { computed, ref } from "vue";
-import { useRoute, useRouter } from "vue-router";
-import { useExperienceStore } from "@/store/experienceStore";
-import { experienceSchema } from "@/validations/experienceSchema";
-import { validationErrors, validateData } from "@/services/yup";
+import { computed, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { useExperienceStore } from '@/store/experienceStore';
+import { experienceSchema } from '@/validations/experienceSchema';
+import { validationErrors, validateData } from '@/services/yup';
 
 const route = useRoute();
 const router = useRouter();
@@ -126,15 +135,29 @@ const resetError = (field) => {
 
 const updateExperience = async () => {
   try {
-    validationErrors.value["experienceUpdateForm"] = {};
+    validationErrors.value['experienceUpdateForm'] = {};
+
     const isValid = await validateData(
-      "experienceUpdateForm",
+      'experienceUpdateForm',
       experienceSchema,
       experience.value
     );
+
     if (!isValid) return;
+
+    if (
+      experience.value.technologies &&
+      typeof experience.value.technologies === 'string'
+    ) {
+      const separator = /[,|-]/;
+      experience.value.technologies = experience.value.technologies
+        .split(separator)
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+
     await experienceStore.updateExperience(route.params.id, experience.value);
-    router.push({ name: "experiences" });
+    router.push({ name: 'experiences' });
   } catch (error) {
     console.error(error);
   }

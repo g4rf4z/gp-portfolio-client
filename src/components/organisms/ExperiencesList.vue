@@ -4,8 +4,7 @@
       v-for="(experience, index) in sortedExperiences"
       :key="index"
       :class="{
-        dimmed:
-          hoveredExperienceId !== null && experience.id !== hoveredExperienceId,
+        dimmed: selectedCard !== null && selectedCard !== experience.id,
       }"
     >
       <experience-card-molecule
@@ -17,8 +16,9 @@
         :from="experience.fromToString"
         :to="experience.toToString"
         :tasks="experience.tasks"
-        @mouseover="hoveredCard(experience.id)"
-        @mouseleave="unhovered"
+        :technologies="experience.technologies"
+        @mouseover="selectExperienceCard(experience.id)"
+        @mouseleave="unselectExperienceCard"
       ></experience-card-molecule>
     </li>
     <icon-link-molecule
@@ -42,13 +42,13 @@ import { useAuthenticationStore } from '@/store/authenticationStore';
 const experienceStore = useExperienceStore();
 const authenticationStore = useAuthenticationStore();
 
+const session = computed(() => authenticationStore.session);
+const admin = computed(() => authenticationStore.admin);
 const sortedExperiences = computed(() =>
   experienceStore.experiences
     .slice()
     .sort((a, b) => new Date(b.from) - new Date(a.from))
 );
-const session = computed(() => authenticationStore.session);
-const admin = computed(() => authenticationStore.admin);
 
 const retrieveExperiences = async () => {
   try {
@@ -59,14 +59,13 @@ const retrieveExperiences = async () => {
 };
 retrieveExperiences();
 
-let hoveredExperienceId = ref(null);
+const selectedCard = ref(null);
 
-const hoveredCard = (id) => {
-  hoveredExperienceId.value = id;
+const selectExperienceCard = (id) => {
+  selectedCard.value = id;
 };
-
-const unhovered = () => {
-  hoveredExperienceId.value = null;
+const unselectExperienceCard = () => {
+  selectedCard.value = null;
 };
 </script>
 
@@ -82,15 +81,5 @@ ul {
     @apply p-5 flex items-center justify-center text-indigo-200 bg-slate-800/25;
     @apply hover:text-teal-200 hover:bg-slate-800 hover:duration-300;
   }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0.5;
 }
 </style>

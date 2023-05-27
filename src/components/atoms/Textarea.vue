@@ -13,16 +13,16 @@
 const props = defineProps({
   id: { type: String, required: true },
   name: { type: String, default: null },
-  type: { type: String, default: "text" },
-  modelValue: { type: String, default: null },
+  type: { type: String, default: 'text' },
+  modelValue: { type: [Array, String], default: null },
   placeholder: { type: String, default: null },
 });
 
-const emit = defineEmits(["input", "update:modelValue"]);
+const emit = defineEmits(['input', 'update:modelValue']);
 
 const handleInput = (event) => {
-  emit("input", event);
-  emit("update:modelValue", event.target.value);
+  emit('input', event);
+  emit('update:modelValue', event.target.value);
 };
 </script>
 
