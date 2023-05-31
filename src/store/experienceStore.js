@@ -1,9 +1,9 @@
-import { defineStore } from "pinia";
-import { Experience } from "@/models/Experience.model";
-import { apiWrapper } from "@/services/api";
+import { defineStore } from 'pinia';
+import { Experience } from '@/models/Experience.model';
+import { apiWrapper } from '@/services/api';
 
 export const useExperienceStore = defineStore({
-  id: "experienceStore",
+  id: 'experienceStore',
   state: () => ({
     experience: {},
     experiences: [],
@@ -28,31 +28,41 @@ export const useExperienceStore = defineStore({
       from,
       to,
       tasks,
+      technologies,
     }) {
       try {
-        this.loaders["createExperience"] = true;
+        this.loaders['createExperience'] = true;
         const createdExperience = await apiWrapper.post(`/experiences`, {
-          data: { position, company, city, country, from, to, tasks },
+          data: {
+            position,
+            company,
+            city,
+            country,
+            from,
+            to,
+            tasks,
+            technologies,
+          },
         });
         return (this.experience = new Experience(createdExperience));
       } finally {
-        this.loaders["createExperience"] = false;
+        this.loaders['createExperience'] = false;
       }
     },
 
     async retrieveExperience(id) {
       try {
-        this.loaders["retrieveExperience"] = true;
+        this.loaders['retrieveExperience'] = true;
         const retrievedSkill = await apiWrapper.get(`/experiences/${id}`);
         return (this.experience = new Experience(retrievedSkill));
       } finally {
-        this.loaders["retrieveExperience"] = false;
+        this.loaders['retrieveExperience'] = false;
       }
     },
 
     async retrieveExperiences() {
       try {
-        this.loaders["retrieveExperiences"] = true;
+        this.loaders['retrieveExperiences'] = true;
         const retrievedExperiences = await apiWrapper.get(`/experiences`);
         const experiencesList = [];
         retrievedExperiences.forEach((experience) => {
@@ -60,28 +70,37 @@ export const useExperienceStore = defineStore({
         });
         return (this.experiences = experiencesList);
       } finally {
-        this.loaders["retrieveExperiences"] = false;
+        this.loaders['retrieveExperiences'] = false;
       }
     },
 
     async updateExperience(
       id,
-      { position, company, city, country, from, to, tasks }
+      { position, company, city, country, from, to, tasks, technologies }
     ) {
       try {
-        this.loaders["updateExperience"] = true;
+        this.loaders['updateExperience'] = true;
         const updatedExperience = await apiWrapper.patch(`/experiences/${id}`, {
-          data: { position, company, city, country, from, to, tasks },
+          data: {
+            position,
+            company,
+            city,
+            country,
+            from,
+            to,
+            tasks,
+            technologies,
+          },
         });
         return (this.experience = new Experience(updatedExperience));
       } finally {
-        this.loaders["updateExperience"] = false;
+        this.loaders['updateExperience'] = false;
       }
     },
 
     async deleteExperience(id) {
       try {
-        this.loaders["deleteExperience"] = true;
+        this.loaders['deleteExperience'] = true;
         const deletedExperience = await apiWrapper.delete(`/experiences/${id}`);
         const deletedExperienceIndex = this.experiences.findIndex(
           (experience) => experience.id === deletedExperience.id
@@ -89,7 +108,7 @@ export const useExperienceStore = defineStore({
         this.experiences.splice(deletedExperienceIndex, 1);
         return new Experience(deletedExperience);
       } finally {
-        this.loaders["deleteExperience"] = false;
+        this.loaders['deleteExperience'] = false;
       }
     },
   },

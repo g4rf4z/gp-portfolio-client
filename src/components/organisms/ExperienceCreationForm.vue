@@ -5,7 +5,7 @@
       id="position"
       name="position"
       v-model="experienceData.position"
-      placeholder="Développeur JavaScript"
+      placeholder="Développeur Full Stack"
       :error-message="validationErrors.experienceCreationForm?.position"
       @input="resetError('position')"
     ></form-input-molecule>
@@ -14,7 +14,7 @@
       id="company"
       name="company"
       v-model="experienceData.company"
-      placeholder="Google LLC"
+      placeholder="Weglot"
       :error-message="validationErrors.experienceCreationForm?.company"
       @input="resetError('company')"
     ></form-input-molecule>
@@ -23,7 +23,7 @@
       id="city"
       name="city"
       v-model="experienceData.city"
-      placeholder="Mountain View"
+      placeholder="Paris"
       :error-message="validationErrors.experienceCreationForm?.city"
       @input="resetError('city')"
     ></form-input-molecule>
@@ -32,7 +32,7 @@
       id="country"
       name="country"
       v-model="experienceData.country"
-      placeholder="États-Unis"
+      placeholder="France"
       :error-message="validationErrors.experienceCreationForm?.country"
       @input="resetError('country')"
     ></form-input-molecule
@@ -56,13 +56,22 @@
       @input="resetError('to')"
     ></form-input-molecule>
     <form-textarea-molecule
-      label="Descriptif"
+      label="Tâche(s)"
       id="tasks"
       name="tasks"
       v-model="experienceData.tasks"
-      placeholder="Décrivez vos missions en quelques lignes..."
+      placeholder="Décrivez les tâches effectuées..."
       :error-message="validationErrors.experienceCreationForm?.tasks"
       @input="resetError('tasks')"
+    ></form-textarea-molecule>
+    <form-textarea-molecule
+      label="Technologie(s)"
+      id="technologies"
+      name="technologies"
+      v-model="experienceData.technologies"
+      placeholder="Renseignez les technologies utilisées..."
+      :error-message="validationErrors.experienceCreationForm?.technologies"
+      @input="resetError('technologies')"
     ></form-textarea-molecule>
     <div class="button-wrapper">
       <button-atom type="submit" :loading="loading">Créer</button-atom>
@@ -71,15 +80,15 @@
 </template>
 
 <script setup>
-import FormInputMolecule from "#/molecules/FormInput.vue";
-import FormTextareaMolecule from "#/molecules/FormTextarea.vue";
-import ButtonAtom from "#/atoms/Button.vue";
+import FormInputMolecule from '#/molecules/FormInput.vue';
+import FormTextareaMolecule from '#/molecules/FormTextarea.vue';
+import ButtonAtom from '#/atoms/Button.vue';
 
-import { computed, reactive, ref } from "vue";
-import { useRouter } from "vue-router";
-import { useExperienceStore } from "@/store/experienceStore";
-import { experienceSchema } from "@/validations/experienceSchema";
-import { validationErrors, validateData } from "@/services/yup";
+import { computed, reactive, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useExperienceStore } from '@/store/experienceStore';
+import { experienceSchema } from '@/validations/experienceSchema';
+import { validationErrors, validateData } from '@/services/yup';
 
 const router = useRouter();
 
@@ -95,6 +104,7 @@ const experienceData = reactive({
   from: null,
   to: null,
   tasks: null,
+  technologies: null,
 });
 
 const currentDate = ref(new Date().toISOString().slice(0, 10));
@@ -123,15 +133,24 @@ const resetError = (field) => {
 
 const createExperience = async () => {
   try {
-    validationErrors.value["experienceCreationForm"] = {};
+    validationErrors.value['experienceCreationForm'] = {};
+
     const isValid = await validateData(
-      "experienceCreationForm",
+      'experienceCreationForm',
       experienceSchema,
       experienceData
     );
+
     if (!isValid) return;
+
+    const separator = /[,|-]/;
+    experienceData.technologies = experienceData.technologies
+      .split(separator)
+      .map((s) => s.trim())
+      .filter(Boolean);
+
     await experienceStore.createExperience(experienceData);
-    router.push({ name: "experiences" });
+    router.push({ name: 'experiences' });
   } catch (error) {
     console.error(error);
   }

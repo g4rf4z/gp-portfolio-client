@@ -24,12 +24,18 @@
     </div>
     <div class="informations-wrapper">
       <h4>{{ position }} · {{ company }}</h4>
-      <p>{{ from }} · {{ to }}</p>
-      <p>{{ city }} · {{ country }}</p>
+      <p class="dates">{{ from }} - {{ to }}</p>
+      <p>{{ city }}, {{ country }}</p>
       <p class="tasks">{{ tasks }}</p>
     </div>
     <div class="technologies-wrapper">
-      <h5>{{ technology }}</h5>
+      <h5
+        v-for="(technology, index) in technologies"
+        :key="index"
+        class="technologies"
+      >
+        {{ technology }}
+      </h5>
     </div>
   </card-wrapper-atom>
 </template>
@@ -53,8 +59,8 @@ const props = defineProps({
   country: { type: String, required: true },
   from: { type: String, required: true },
   to: { type: String, required: true },
-  tasks: { type: [Array, String], required: true },
-  technology: { type: String, required: true },
+  tasks: { type: String, required: true },
+  technologies: { type: Array, required: true },
 });
 
 const authenticationStore = useAuthenticationStore();
@@ -97,7 +103,11 @@ const deleteExperience = async (id) => {
     @apply select-none;
 
     h4 {
-      @apply font-bold;
+      @apply font-medium text-lg text-indigo-200 sm:text-xl;
+    }
+
+    .dates {
+      @apply font-mono text-teal-200;
     }
 
     .tasks {
@@ -106,10 +116,10 @@ const deleteExperience = async (id) => {
   }
 
   .technologies-wrapper {
-    @apply mt-5 space-x-2;
+    @apply mt-5 space-y-2;
 
-    h5 {
-      @apply px-4 inline-block rounded-full text-teal-200 bg-slate-800;
+    .technologies {
+      @apply mr-2 px-4 py-1 inline-block rounded-full font-mono text-teal-200 bg-slate-950/50;
     }
   }
 }

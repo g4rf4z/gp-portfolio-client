@@ -12,7 +12,7 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 article {
-  @apply p-5 rounded duration-300;
+  @apply p-5 rounded;
 }
 
 article[class='skill-card'] {
