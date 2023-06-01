@@ -49,7 +49,7 @@ import { computed } from 'vue';
 import { useAuthenticationStore } from '@/store/authenticationStore';
 import { useExperienceStore } from '@/store/experienceStore';
 
-import { useToggle } from '@/utils/useToggle';
+import { useToggleAnimation } from '@/utils/useToggleAnimation';
 
 const props = defineProps({
   id: { type: String, required: true },
@@ -69,8 +69,9 @@ const experienceStore = useExperienceStore();
 const session = computed(() => authenticationStore.session);
 const admin = computed(() => authenticationStore.admin);
 
-const { animation: bounce, toggleAnimation: toggleBounce } = useToggle();
-const { animation: shake, toggleAnimation: toggleShake } = useToggle();
+const { animation: bounce, toggleAnimation: toggleBounce } =
+  useToggleAnimation();
+const { animation: shake, toggleAnimation: toggleShake } = useToggleAnimation();
 
 const deleteExperience = async (id) => {
   try {

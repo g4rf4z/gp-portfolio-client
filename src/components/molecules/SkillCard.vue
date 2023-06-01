@@ -43,7 +43,7 @@ import { computed, ref, watch } from 'vue';
 import { useAuthenticationStore } from '@/store/authenticationStore';
 import { useSkillStore } from '@/store/skillStore';
 
-import { useToggle } from '@/utils/useToggle';
+import { useToggleAnimation } from '@/utils/useToggleAnimation';
 
 const props = defineProps({
   id: { type: String, required: true },
@@ -58,8 +58,9 @@ const skillStore = useSkillStore();
 const session = computed(() => authenticationStore.session);
 const admin = computed(() => authenticationStore.admin);
 
-const { animation: bounce, toggleAnimation: toggleBounce } = useToggle();
-const { animation: shake, toggleAnimation: toggleShake } = useToggle();
+const { animation: bounce, toggleAnimation: toggleBounce } =
+  useToggleAnimation();
+const { animation: shake, toggleAnimation: toggleShake } = useToggleAnimation();
 
 const deleteSkill = async (id) => {
   try {

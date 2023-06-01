@@ -6,7 +6,7 @@
         :name="skill.name"
         :image="skill.image"
         :progress="skill.progress"
-      />
+      ></skill-card-molecule>
     </li>
     <icon-link-molecule
       v-if="session && admin"
@@ -19,12 +19,12 @@
 </template>
 
 <script setup>
-import SkillCardMolecule from "#/molecules/SkillCard.vue";
-import IconLinkMolecule from "#/molecules/IconLink.vue";
+import SkillCardMolecule from '#/molecules/SkillCard.vue';
+import IconLinkMolecule from '#/molecules/IconLink.vue';
 
-import { computed } from "vue";
-import { useSkillStore } from "@/store/skillStore";
-import { useAuthenticationStore } from "@/store/authenticationStore";
+import { computed } from 'vue';
+import { useSkillStore } from '@/store/skillStore';
+import { useAuthenticationStore } from '@/store/authenticationStore';
 
 const skillStore = useSkillStore();
 const authenticationStore = useAuthenticationStore();
