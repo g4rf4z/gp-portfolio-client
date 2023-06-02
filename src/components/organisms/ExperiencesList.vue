@@ -21,13 +21,15 @@
         @mouseleave="unselectExperienceCard"
       ></experience-card-molecule>
     </li>
-    <icon-link-molecule
-      v-if="session && admin"
-      to="/create-experience"
-      weight="fas"
-      icon="plus"
-      class="icon-link"
-    ></icon-link-molecule>
+    <li>
+      <icon-link-molecule
+        v-if="session && admin"
+        to="/create-experience"
+        weight="fas"
+        icon="plus"
+        class="creation-icon"
+      ></icon-link-molecule>
+    </li>
   </ul>
 </template>
 
@@ -71,15 +73,15 @@ const unselectExperienceCard = () => {
 
 <style lang="scss" scoped>
 ul {
-  @apply flex flex-col space-y-5;
+  @apply flex flex-col;
 
   li.dimmed {
     @apply opacity-25;
   }
 
-  .icon-link {
-    @apply p-5 flex items-center justify-center text-indigo-200 bg-slate-800/25;
-    @apply hover:text-teal-200 hover:bg-slate-800 hover:duration-300;
+  .creation-icon {
+    @apply h-[244px] flex items-center justify-center rounded text-indigo-200 bg-slate-800/25 duration-300;
+    @apply hover:text-teal-200 hover:bg-slate-800/50;
   }
 }
 </style>
