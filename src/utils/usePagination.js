@@ -27,6 +27,7 @@ export const usePagination = (data, pageSize) => {
   };
 
   return {
+    pageSize,
     paginatedData,
     displayMoreData,
     displayLessData,

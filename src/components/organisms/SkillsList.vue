@@ -20,6 +20,7 @@
   </ul>
   <div class="button-wrapper">
     <button-atom
+      v-if="pageSize >= 5"
       @click="dataLoaded ? displayLessSkills() : displayMoreSkills()"
     >
       {{ dataLoaded ? 'Voir moins' : 'Voir plus' }}
@@ -55,6 +56,7 @@ const retrieveSkills = async () => {
 retrieveSkills();
 
 const {
+  pageSize,
   paginatedData: paginatedSkills,
   displayMoreData: displayMoreSkills,
   displayLessData: displayLessSkills,
