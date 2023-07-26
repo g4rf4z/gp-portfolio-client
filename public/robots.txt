@@ -3,3 +3,5 @@ User-agent: *
 Disallow: /src/assets/images/portrait.png
 
 Allow: /
+
+Sitemap: https://www.gregoirepinte.com/sitemap.xml
