@@ -3,7 +3,7 @@
   <animated-typewriter-atom></animated-typewriter-atom>
   <h2>Je construis des choses pour le web.</h2>
   <p>
-    Développeur front-end expert
+    Développeur TypeScript expert
     <link-atom is="a" to="https://vuejs.org" class="external-link"
       >Vue.js</link-atom
     >, spécialisé dans la conception d'expériences numériques intuitives et

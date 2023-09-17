@@ -6,22 +6,22 @@
 </template>
 
 <script setup>
-import MainNavOrganism from "#/organisms/MainNav.vue";
+import MainNavOrganism from '#/organisms/MainNav.vue';
 
-import { ref } from "vue";
+import { ref } from 'vue';
 
 const active = ref(false);
 let previousScrollValue;
 
 // Updates active's value based on the window's scroll position.
-window.addEventListener("scroll", () => {
+window.addEventListener('scroll', () => {
   active.value = window.scrollY > 0;
 
   // Adjusts the header's position based on the scroll direction by updating the previous scroll value.
   if (window.innerWidth > 1023.9) {
     const currentScrollValue = window.pageYOffset;
-    document.querySelector("header").style.top =
-      previousScrollValue > currentScrollValue ? "0" : "-80px";
+    document.querySelector('header').style.top =
+      previousScrollValue > currentScrollValue ? '0' : '-80px';
     previousScrollValue = currentScrollValue;
   }
 });
@@ -35,7 +35,7 @@ const toggleBackground = (event) => {
 
 <style lang="scss" scoped>
 header {
-  @apply h-20 flex items-center justify-between fixed top-0 left-0 right-0 z-50 backdrop-blur bg-slate-900/50 duration-300;
+  @apply h-20 flex items-center justify-between fixed top-0 left-0 right-0 z-50 backdrop-blur duration-300;
 
   &.scroll {
     @apply drop-shadow-lg;
