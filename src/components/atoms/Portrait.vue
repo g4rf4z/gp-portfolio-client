@@ -6,7 +6,7 @@
     @mouseleave="handleMouseleave"
   >
     <picture ref="picture">
-      <img src="../../assets/images/portrait.png" alt="Portrait" />
+      <img src="../../assets/images/portrait.webp" alt="Portrait" />
     </picture>
     <div ref="glow" class="glow"></div>
     <div class="frame" @mousemove.stop></div>
