@@ -16,29 +16,29 @@
 </template>
 
 <script setup>
-import LinkAtom from "#/atoms/Link.vue";
-import IconAtom from "#/atoms/Icon.vue";
+import LinkAtom from '#/atoms/Link.vue';
+import IconAtom from '#/atoms/Icon.vue';
 
 const links = [
   {
-    to: "https://github.com/g4rf4z",
-    name: "GitHub",
-    icon: "github",
+    to: 'https://github.com/g4rf4z',
+    name: 'GitHub',
+    icon: 'github',
   },
   {
-    to: "https://www.instagram.com/gregoire.pinte",
-    name: "Instagram",
-    icon: "instagram",
+    to: 'https://www.instagram.com/gregoire.pinte',
+    name: 'Instagram',
+    icon: 'instagram',
   },
   {
-    to: "https://www.linkedin.com/in/gr%C3%A9goire-pinte-02ba65209",
-    name: "LinkedIn",
-    icon: "linkedin",
+    to: 'https://www.linkedin.com/in/gr%C3%A9goire-pinte-02ba65209',
+    name: 'LinkedIn',
+    icon: 'linkedin',
   },
   {
-    to: "https://dribbble.com/g4rf4z",
-    name: "Dribbble",
-    icon: "dribbble",
+    to: 'https://dribbble.com/g4rf4z',
+    name: 'Dribbble',
+    icon: 'dribbble',
   },
 ];
 </script>
@@ -61,7 +61,7 @@ aside {
   }
 
   &::after {
-    content: "";
+    content: '';
     @apply h-full w-[1px] absolute bottom-0 left-[44%] bg-indigo-200 translate-y-full;
   }
 }
