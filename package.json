@@ -1,13 +1,18 @@
 {
   "name": "gp-portfolio-client",
+  "description": "Portfolio Client",
   "version": "1.0.0",
-  "description": "Portfolio Client using Vue.js and TailwindCSS",
-  "repository": "https://github.com/g4rf4z/gp-portfolio-client",
-  "author": "g4rf4z <gregoire.pinte@gmail.com>",
+  "type": "module",
   "license": "MIT",
+  "private": true,
+  "author": {
+    "name": "Grégoire Pinte",
+    "email": "gregoire.pinte@gmail.com",
+    "url": "https://www.gregoirepinte.com/"
+  },
   "engines": {
-    "node": "~18.15.0",
-    "npm": "~9.5.0"
+    "node": "20.8.0",
+    "npm": "10.1.0"
   },
   "scripts": {
     "start": "node server.js",
