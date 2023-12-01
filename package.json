@@ -19,24 +19,24 @@
     "deps:reset": "npm run deps:clear && npm install"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "~6.4.2",
-    "@fortawesome/free-brands-svg-icons": "~6.4.2",
-    "@fortawesome/free-solid-svg-icons": "~6.4.2",
-    "@fortawesome/vue-fontawesome": "~3.0.3",
-    "axios": "~1.6.0",
+    "@fortawesome/fontawesome-svg-core": "~6.5.1",
+    "@fortawesome/free-brands-svg-icons": "~6.5.1",
+    "@fortawesome/free-solid-svg-icons": "~6.5.1",
+    "@fortawesome/vue-fontawesome": "~3.0.5",
+    "axios": "~1.6.2",
     "express": "~4.18.2",
     "pinia": "~2.1.7",
     "rimraf": "~5.0.5",
     "sass": "~1.69.5",
-    "vue": "~3.3.7",
+    "vue": "~3.3.9",
     "vue-router": "~4.2.5",
     "yup": "~1.3.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "~4.4.0",
+    "@vitejs/plugin-vue": "~4.5.1",
     "autoprefixer": "~10.4.16",
     "postcss": "~8.4.31",
     "tailwindcss": "~3.3.5",
-    "vite": "~4.5.0"
+    "vite": "~5.0.4"
   }
 }
