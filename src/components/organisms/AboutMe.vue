@@ -6,29 +6,22 @@
         site e-commerce avec
         <link-atom is="a" to="https://www.shopify.com/" class="external-link"
           >Shopify</link-atom
-        >. Cette expérience m'a conduit à me poser une question qui a changé ma
-        vie : comment fonctionne un site web ? Poussé par ma curiosité et mon
-        envie d'apprendre, j'ai entamé un parcours d'autodidacte pour percer les
-        mystères du web.
+        >. Cette expérience m'a amené à me poser une question fondamentale qui a
+        changé ma vie : quels sont les mécanismes qui régissent le
+        fonctionnement d'un site web ? Poussé par ma curiosité et mon désir
+        d'apprendre, je me suis lancé en autodidacte pour percer les mystères du
+        web.
       </p>
       <p class="pb-5">
-        En 2021, j'ai franchi une étape supplémentaire en débutant un titre
-        professionnel de développeur web et web mobile. En 2022, je quittais mon
-        emploi de responsable recherche et développement chez
+        En 2021, j'ai franchi une nouvelle étape en débutant une formation
+        diplômante de développeur web et web mobile au sein de l'école
+        <link-atom is="a" to="https://www.educatel.fr/" class="external-link"
+          >Educatel</link-atom
+        >, à l'issue de laquelle j'ai eu le privilège de faire mon stage de fin
+        d'étude chez
         <link-atom
           is="a"
-          to="https://www.augusteetferdinand.com/"
-          class="external-link"
-          >Auguste & Ferdinand</link-atom
-        >
-        pour me consacrer pleinement à ma reconversion professionnelle.
-      </p>
-      <p class="pb-5">
-        J'ai eu le privilège de faire mon stage de fin d'étude au sein de la
-        start-up
-        <link-atom
-          is="a"
-          to="https://www.lille-esport.gg/"
+          to="https://twitter.com/LilleEsportClub"
           class="external-link"
           >Lille Esport</link-atom
         >.
@@ -36,7 +29,7 @@
       <p>
         Aujourd'hui, je suis fier de mettre mes compétences au service de vos
         idées. N'hésitez pas à me contacter et à me faire part de vos projets.
-        Ensemble, nous pouvons créer une expérience numérique inoubliable !
+        Ensemble, nous pouvons écrire le web de demain.
       </p>
       <div class="button-wrapper">
         <link-atom
@@ -55,9 +48,9 @@
 </template>
 
 <script setup>
-import LinkAtom from "#/atoms/Link.vue";
-import ButtonAtom from "#/atoms/Button.vue";
-import PortraitAtom from "#/atoms/Portrait.vue";
+import LinkAtom from '#/atoms/Link.vue';
+import ButtonAtom from '#/atoms/Button.vue';
+import PortraitAtom from '#/atoms/Portrait.vue';
 </script>
 
 <style lang="scss" scoped>

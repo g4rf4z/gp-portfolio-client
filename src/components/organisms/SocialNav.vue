@@ -35,11 +35,6 @@ const links = [
     name: 'LinkedIn',
     icon: 'linkedin',
   },
-  {
-    to: 'https://dribbble.com/g4rf4z',
-    name: 'Dribbble',
-    icon: 'dribbble',
-  },
 ];
 </script>
 
