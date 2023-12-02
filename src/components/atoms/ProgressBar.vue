@@ -5,13 +5,13 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed } from 'vue';
 
 const props = defineProps({
   progress: { type: Number, required: true },
 });
 
-const progress = computed(() => props.progress + "%");
+const progress = computed(() => props.progress + '%');
 </script>
 
 <style lang="scss" scoped>
